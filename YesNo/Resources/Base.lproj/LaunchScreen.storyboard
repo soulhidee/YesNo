@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -15,8 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="rwx-h2-KVq">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rwx-h2-KVq" secondAttribute="bottom" id="AP5-WR-OKc"/>
+                            <constraint firstItem="rwx-h2-KVq" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Bx4-NU-hkj"/>
+                            <constraint firstAttribute="trailing" secondItem="rwx-h2-KVq" secondAttribute="trailing" id="EwM-0i-JPF"/>
+                            <constraint firstItem="rwx-h2-KVq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="v0j-eQ-5mq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,6 +37,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchScreen" width="1242" height="2688"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -10,9 +10,22 @@
 		867D45FA2DB5543A0014D830 /* YesNo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YesNo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		867D461A2DB572290014D830 /* Exceptions for "YesNo" folder in "YesNo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Info.plist,
+			);
+			target = 867D45F92DB5543A0014D830 /* YesNo */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		867D45FC2DB5543A0014D830 /* YesNo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				867D461A2DB572290014D830 /* Exceptions for "YesNo" folder in "YesNo" target */,
+			);
 			path = YesNo;
 			sourceTree = "<group>";
 		};
