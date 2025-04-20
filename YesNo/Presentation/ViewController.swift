@@ -3,23 +3,27 @@ import WebKit
 
 final class ViewController: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var actionButton: UIButton!
+    
+    
+    // MARK: - Properties
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
     }
     
-    
-    
+    // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
     }
     
+    // MARK: - Private Methods
     private func setupUI() {
         setupGradientBackground()
         setupButtonShadow()
-        
     }
     
     private func setupButtonShadow() {
@@ -29,7 +33,6 @@ final class ViewController: UIViewController {
         actionButton.layer.shadowRadius = 8
         actionButton.layer.masksToBounds = false
     }
-    
     
     private func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
