@@ -70,18 +70,25 @@
                                     <constraint firstAttribute="trailing" secondItem="ejo-Dg-a3O" secondAttribute="trailing" constant="43" id="7AH-gL-E9I"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
+                                <rect key="frame" x="186.66666666666666" y="384" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M88-5K-3GU"/>
+                            <constraint firstItem="nUY-cf-ACL" firstAttribute="centerY" secondItem="S9m-e5-wOR" secondAttribute="centerY" id="SUz-Ao-XZW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qyB-Fx-FOs" secondAttribute="trailing" constant="19" id="euF-62-RPJ"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="frP-XN-bTU"/>
+                            <constraint firstItem="nUY-cf-ACL" firstAttribute="centerX" secondItem="S9m-e5-wOR" secondAttribute="centerX" id="sZf-Z0-kDl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="qyB-Fx-FOs" secondAttribute="top" constant="24" id="ufs-Vz-Suw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="xn9-J2-ypO" id="TaB-DD-mHP"/>
+                        <outlet property="activityIndicator" destination="nUY-cf-ACL" id="G2G-Q4-lXg"/>
                         <outlet property="webView" destination="S9m-e5-wOR" id="jKb-3h-W7w"/>
                     </connections>
                 </viewController>

@@ -4,9 +4,9 @@ import WebKit
 final class ViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var actionButton: UIButton!
-    
     
     // MARK: - Properties
     
