@@ -21,22 +21,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-Fx-FOs">
                                 <rect key="frame" x="19" y="94" width="355" height="690"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3hp-nW-KmY" userLabel="Gif">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DV-Em-Dbn">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="600"/>
                                         <subviews>
-                                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9m-e5-wOR">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lCN-cu-Ho9">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="600"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <wkWebViewConfiguration key="configuration">
-                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                    <wkPreferences key="preferences"/>
-                                                </wkWebViewConfiguration>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </wkWebView>
+                                            </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-Dg-a3O" userLabel="Button">
@@ -68,10 +58,13 @@
                                 <constraints>
                                     <constraint firstItem="ejo-Dg-a3O" firstAttribute="leading" secondItem="qyB-Fx-FOs" secondAttribute="leading" constant="43" id="5iN-Gj-GQ8"/>
                                     <constraint firstAttribute="trailing" secondItem="ejo-Dg-a3O" secondAttribute="trailing" constant="43" id="7AH-gL-E9I"/>
+                                    <constraint firstAttribute="trailing" secondItem="7DV-Em-Dbn" secondAttribute="trailing" id="oI2-WH-m6a"/>
+                                    <constraint firstItem="7DV-Em-Dbn" firstAttribute="leading" secondItem="qyB-Fx-FOs" secondAttribute="leading" id="smX-W6-9Fr"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
                                 <rect key="frame" x="186.66666666666666" y="384" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -79,17 +72,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M88-5K-3GU"/>
-                            <constraint firstItem="nUY-cf-ACL" firstAttribute="centerY" secondItem="S9m-e5-wOR" secondAttribute="centerY" id="SUz-Ao-XZW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qyB-Fx-FOs" secondAttribute="trailing" constant="19" id="euF-62-RPJ"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="frP-XN-bTU"/>
-                            <constraint firstItem="nUY-cf-ACL" firstAttribute="centerX" secondItem="S9m-e5-wOR" secondAttribute="centerX" id="sZf-Z0-kDl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="qyB-Fx-FOs" secondAttribute="top" constant="24" id="ufs-Vz-Suw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="xn9-J2-ypO" id="TaB-DD-mHP"/>
                         <outlet property="activityIndicator" destination="nUY-cf-ACL" id="G2G-Q4-lXg"/>
-                        <outlet property="webView" destination="S9m-e5-wOR" id="jKb-3h-W7w"/>
+                        <outlet property="gifImageView" destination="lCN-cu-Ho9" id="YcO-Hk-3KC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

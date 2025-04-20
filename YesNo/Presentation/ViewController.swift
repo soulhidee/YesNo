@@ -1,11 +1,10 @@
 import UIKit
-import WebKit
 
 final class ViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var gifImageView: UIImageView!
     @IBOutlet weak var actionButton: UIButton!
     
     // MARK: - Properties
@@ -27,14 +26,6 @@ final class ViewController: UIViewController {
         showActivityIndicator()
     }
     
-    private func setupButtonShadow() {
-        actionButton.layer.shadowColor = UIColor.black.cgColor
-        actionButton.layer.shadowOpacity = 0.1
-        actionButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        actionButton.layer.shadowRadius = 8
-        actionButton.layer.masksToBounds = false
-    }
-    
     private func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
@@ -48,6 +39,14 @@ final class ViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    private func setupButtonShadow() {
+        actionButton.layer.shadowColor = UIColor.black.cgColor
+        actionButton.layer.shadowOpacity = 0.1
+        actionButton.layer.shadowOffset = CGSize(width: 0, height: 4)
+        actionButton.layer.shadowRadius = 8
+        actionButton.layer.masksToBounds = false
     }
     
     private func showActivityIndicator() {

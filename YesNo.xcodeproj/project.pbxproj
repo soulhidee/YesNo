@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		867D461D2DB57FA80014D830 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867D461C2DB57FA70014D830 /* WebKit.framework */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		867D45FA2DB5543A0014D830 /* YesNo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YesNo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		867D461C2DB57FA70014D830 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -41,7 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				867D461D2DB57FA80014D830 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
