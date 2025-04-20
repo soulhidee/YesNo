@@ -23,8 +23,19 @@ final class ViewController: UIViewController {
     private func setupUI() {
         setupGradientBackground()
         setupButtonShadow()
+//        setupGifImageViewStyle()
         showActivityIndicator()
+        
     }
+    
+//    private func setupGifImageViewStyle() {
+//        gifImageView.layer.backgroundColor = UIColor(named: "BGGifColor")?.cgColor ?? UIColor.gray.cgColor
+//        gifImageView.layer.cornerRadius = 20
+//        gifImageView.layer.shadowColor = UIColor.black.cgColor
+//        gifImageView.layer.shadowOpacity = 0.1
+//        gifImageView.layer.shadowRadius = 8
+//        gifImageView.clipsToBounds = false
+//    }
     
     private func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()

@@ -28,6 +28,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="600"/>
                                             </imageView>
                                         </subviews>
+                                        <color key="backgroundColor" red="0.1333333333" green="0.5450980392" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-Dg-a3O" userLabel="Button">
                                         <rect key="frame" x="43" y="620" width="269" height="70"/>
