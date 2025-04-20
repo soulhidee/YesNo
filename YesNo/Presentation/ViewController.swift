@@ -24,6 +24,7 @@ final class ViewController: UIViewController {
     private func setupUI() {
         setupGradientBackground()
         setupButtonShadow()
+        showActivityIndicator()
     }
     
     private func setupButtonShadow() {
@@ -47,6 +48,16 @@ final class ViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    private func showActivityIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    private func hideActivityIndicator() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
 }
 
