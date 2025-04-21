@@ -96,7 +96,31 @@ final class ViewController: UIViewController {
     
     private func loadGifInWebView(from urlString: String) {
         guard let url = URL(string: urlString) else { return }
-        let request = URLRequest(url: url)
-        gifWebView.load(request)
+        
+        let htmlString = """
+        <html>
+            <head>
+                <style>
+                    body, html {
+                        margin: 0;
+                        padding: 0;
+                        height: 100%;
+                        width: 100%;
+                        overflow: hidden;
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                </style>
+            </head>
+            <body>
+                <img src="\(urlString)" />
+            </body>
+        </html>
+        """
+
+        gifWebView.loadHTMLString(htmlString, baseURL: nil)
     }
 }
