@@ -21,7 +21,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         gifWebView.navigationDelegate = self
         setupUI()
-        soundManager.prepareSounds(named: ["buttonClick"])
+        soundManager.prepareSounds(named: ["buttonClick", "yes", "no"])
     }
     
     // MARK: - Action
@@ -84,10 +84,20 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         hideActivityIndicator()
         yesNoLabel.text = currentAnswer?.capitalized
+        
+        if let answer = currentAnswer?.lowercased() {
+            if answer == "yes" {
+                soundManager.playSound(named: "yes")
+            } else if answer == "no" {
+                soundManager.playSound(named: "no")
+            }
+        }
+
         UIView.animate(withDuration: 0.3) {
             self.yesNoLabel.alpha = 1
             self.gifWebView.alpha = 1
         }
+
         actionButton.isUserInteractionEnabled = true
     }
 }
