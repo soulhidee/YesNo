@@ -21,6 +21,7 @@ final class ViewController: UIViewController {
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         questionLabel.isHidden = true
+        
         loadGif()
         
     }
@@ -78,25 +79,23 @@ final class ViewController: UIViewController {
     }
     
     private func loadGif() {
-            activityIndicator.startAnimating()
-            
-            gifLoader.loadGif { [weak self] result in
-                DispatchQueue.main.async {
-                    self?.activityIndicator.stopAnimating()
-                    
-                    switch result {
-                    case .success(let gifResponse):
-                        self?.loadGifInWebView(from: gifResponse.gif)
-                    case .failure(let error):
-                        print("Ошибка загрузки гифки: \(error.localizedDescription)")
-                    }
+        showActivityIndicator()
+        gifLoader.loadGif { [weak self] result in
+            DispatchQueue.main.async {
+                self?.hideActivityIndicator()
+                
+                switch result {
+                case .success(let gifResponse):
+                    self?.loadGifInWebView(from: gifResponse.gif)
+                case .failure(let error):
+                    print("Ошибка загрузки гифки: \(error.localizedDescription)")
                 }
             }
         }
+    }
     
     private func loadGifInWebView(from urlString: String) {
-        guard let url = URL(string: urlString) else { return }
-        
+
         let htmlString = """
         <html>
             <head>
@@ -120,7 +119,7 @@ final class ViewController: UIViewController {
             </body>
         </html>
         """
-
+    
         gifWebView.loadHTMLString(htmlString, baseURL: nil)
     }
 }

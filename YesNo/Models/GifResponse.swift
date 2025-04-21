@@ -7,3 +7,4 @@ struct GifResponse: Decodable {
         case gif = "image"
     }
 }
+
