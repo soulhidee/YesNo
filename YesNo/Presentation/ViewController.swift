@@ -24,11 +24,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.3) {
-            self.yesNoLabel.alpha = .zero
-            self.gifWebView.alpha = .zero
-            self.questionLabel.alpha = .zero
-        }
+        animateElementsOut()
         actionButton.isUserInteractionEnabled = false
         loadGif()
         
@@ -43,6 +39,14 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         UIStyler.styleButton(actionButton)
     }
     
+    private func animateElementsOut() {
+        UIView.animate(withDuration: 0.3) {
+            self.yesNoLabel.alpha = .zero
+            self.gifWebView.alpha = .zero
+            self.questionLabel.alpha = .zero
+        }
+    }
+    
     private func showActivityIndicator() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
@@ -52,6 +56,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
+    
     
     private func loadGif() {
         showActivityIndicator()
