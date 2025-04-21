@@ -1,9 +1,11 @@
 import UIKit
 import WebKit
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Outlets
+    @IBOutlet weak var gifContainerView: UIView!
+    @IBOutlet weak var yesNoLabel: UILabel!
     @IBOutlet var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -11,17 +13,24 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     private var gifLoader = GifLoader()
+    private var currentAnswer: String?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        gifWebView.navigationDelegate = self
         setupUI()
+        
     }
     
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
-        questionLabel.isHidden = true
-        
+        UIView.animate(withDuration: 0.3) {
+            self.yesNoLabel.alpha = .zero
+            self.gifWebView.alpha = .zero
+            self.questionLabel.alpha = .zero
+        }
+        actionButton.isUserInteractionEnabled = false
         loadGif()
         
     }
@@ -32,7 +41,7 @@ final class ViewController: UIViewController {
         setupGifWebViewStyle()
         setupGradientBackground()
         setupButtonShadow()
-        
+        setupGifContainerStyle()
     }
     
     private func setupGradientBackground() {
@@ -50,14 +59,23 @@ final class ViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    private func setupGifContainerStyle() {
+        gifContainerView.layer.cornerRadius = 20
+        gifContainerView.layer.shadowColor = UIColor.black.cgColor
+        gifContainerView.layer.shadowOpacity = 0.1
+        gifContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        gifContainerView.layer.shadowRadius = 8
+        gifContainerView.layer.masksToBounds = false
+    }
+
     private func setupGifWebViewStyle() {
-        gifWebView.backgroundColor = UIColor(named: "BGGifColor") ?? .gray
+        gifWebView.layer.cornerRadius = 20
+        gifWebView.layer.masksToBounds = true
         gifWebView.isOpaque = false
+        gifWebView.backgroundColor = .clear
         gifWebView.scrollView.backgroundColor = .clear
         gifWebView.scrollView.isScrollEnabled = false
         gifWebView.scrollView.bounces = false
-        gifWebView.layer.cornerRadius = 20
-        gifWebView.layer.masksToBounds = true
     }
     
     private func setupButtonShadow() {
@@ -82,13 +100,13 @@ final class ViewController: UIViewController {
         showActivityIndicator()
         gifLoader.loadGif { [weak self] result in
             DispatchQueue.main.async {
-                self?.hideActivityIndicator()
-                
                 switch result {
                 case .success(let gifResponse):
+                    self?.currentAnswer = gifResponse.answer
                     self?.loadGifInWebView(from: gifResponse.gif)
                 case .failure(let error):
                     print("Ошибка загрузки гифки: \(error.localizedDescription)")
+                    self?.hideActivityIndicator()
                 }
             }
         }
@@ -121,5 +139,15 @@ final class ViewController: UIViewController {
         """
     
         gifWebView.loadHTMLString(htmlString, baseURL: nil)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        hideActivityIndicator()
+        yesNoLabel.text = currentAnswer?.capitalized
+        UIView.animate(withDuration: 0.3) {
+            self.yesNoLabel.alpha = 1
+            self.gifWebView.alpha = 1
+        }
+        actionButton.isUserInteractionEnabled = true
     }
 }

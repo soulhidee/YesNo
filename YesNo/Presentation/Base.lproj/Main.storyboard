@@ -21,17 +21,40 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-Fx-FOs">
                                 <rect key="frame" x="19" y="118" width="355" height="666"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DV-Em-Dbn">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="576"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DV-Em-Dbn" userLabel="Gif">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
                                         <subviews>
-                                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwk-5B-JlT">
-                                                <rect key="frame" x="0.0" y="0.0" width="355" height="576"/>
-                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <wkWebViewConfiguration key="configuration">
-                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                    <wkPreferences key="preferences"/>
-                                                </wkWebViewConfiguration>
-                                            </wkWebView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZZ-53-Yru">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
+                                                <subviews>
+                                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwk-5B-JlT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
+                                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <wkWebViewConfiguration key="configuration">
+                                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                            <wkPreferences key="preferences"/>
+                                                        </wkWebViewConfiguration>
+                                                    </wkWebView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="Nwk-5B-JlT" firstAttribute="leading" secondItem="uZZ-53-Yru" secondAttribute="leading" id="2se-cc-bOr"/>
+                                                    <constraint firstItem="Nwk-5B-JlT" firstAttribute="top" secondItem="uZZ-53-Yru" secondAttribute="top" id="qyr-oa-EdD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Nwk-5B-JlT" secondAttribute="bottom" id="vWB-9o-MYE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Nwk-5B-JlT" secondAttribute="trailing" id="xHQ-gR-LRh"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-hh-9it" userLabel="YesNo">
+                                        <rect key="frame" x="124.66666666666666" y="540" width="106" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YesNo?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyW-z1-tWV" userLabel="yesNoLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="106" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <color key="textColor" name="TextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-Dg-a3O" userLabel="Button">
@@ -68,12 +91,12 @@
                                 </constraints>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
-                                <rect key="frame" x="186.66666666666666" y="396" width="20" height="20"/>
+                                <rect key="frame" x="186.66666666666666" y="368" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJg-5H-ESJ">
-                                <rect key="frame" x="63" y="107.66666666666669" width="267" height="597"/>
+                                <rect key="frame" x="63" y="79.666666666666686" width="267" height="597"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="500"/>
                                 <color key="textColor" red="0.22745098039215686" green="0.29803921568627451" blue="0.47843137254901957" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -92,8 +115,10 @@
                     <connections>
                         <outlet property="actionButton" destination="xn9-J2-ypO" id="TaB-DD-mHP"/>
                         <outlet property="activityIndicator" destination="nUY-cf-ACL" id="G2G-Q4-lXg"/>
+                        <outlet property="gifContainerView" destination="uZZ-53-Yru" id="WjB-pP-cwv"/>
                         <outlet property="gifWebView" destination="Nwk-5B-JlT" id="rc2-Fj-pUr"/>
                         <outlet property="questionLabel" destination="UJg-5H-ESJ" id="2Ki-s4-7Ws"/>
+                        <outlet property="yesNoLabel" destination="iyW-z1-tWV" id="Cd3-CM-f7B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
