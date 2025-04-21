@@ -3,6 +3,7 @@ import UIKit
 final class ViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var gifImageView: UIImageView!
