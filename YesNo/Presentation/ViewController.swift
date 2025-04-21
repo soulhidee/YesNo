@@ -3,6 +3,7 @@ import UIKit
 final class ViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var gifImageView: UIImageView!
     @IBOutlet weak var actionButton: UIButton!
@@ -17,14 +18,15 @@ final class ViewController: UIViewController {
     
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
+        questionLabel.isHidden = true
     }
     
     // MARK: - Private Methods
     private func setupUI() {
+        hideActivityIndicator()
         setupGradientBackground()
         setupButtonShadow()
         setupGifImageViewStyle()
-        showActivityIndicator()
         
     }
     

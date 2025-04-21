@@ -66,12 +66,20 @@
                                 <rect key="frame" x="186.66666666666666" y="396" width="20" height="20"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJg-5H-ESJ">
+                                <rect key="frame" x="63" y="107.66666666666669" width="267" height="597"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="500"/>
+                                <color key="textColor" red="0.22745098039215686" green="0.29803921568627451" blue="0.47843137254901957" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UJg-5H-ESJ" firstAttribute="centerY" secondItem="lCN-cu-Ho9" secondAttribute="centerY" id="2Vu-Ey-IFm"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M88-5K-3GU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qyB-Fx-FOs" secondAttribute="trailing" constant="19" id="euF-62-RPJ"/>
+                            <constraint firstItem="UJg-5H-ESJ" firstAttribute="centerX" secondItem="lCN-cu-Ho9" secondAttribute="centerX" id="fSZ-CI-pKQ"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="frP-XN-bTU"/>
                             <constraint firstItem="nUY-cf-ACL" firstAttribute="centerY" secondItem="lCN-cu-Ho9" secondAttribute="centerY" id="lLM-dE-GiD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="qyB-Fx-FOs" secondAttribute="top" id="ufs-Vz-Suw"/>
@@ -82,6 +90,7 @@
                         <outlet property="actionButton" destination="xn9-J2-ypO" id="TaB-DD-mHP"/>
                         <outlet property="activityIndicator" destination="nUY-cf-ACL" id="G2G-Q4-lXg"/>
                         <outlet property="gifImageView" destination="lCN-cu-Ho9" id="YcO-Hk-3KC"/>
+                        <outlet property="questionLabel" destination="UJg-5H-ESJ" id="2Ki-s4-7Ws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
