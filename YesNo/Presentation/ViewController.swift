@@ -27,7 +27,6 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         animateElementsOut()
         actionButton.isUserInteractionEnabled = false
         loadGif()
-        
     }
     
     // MARK: - Private Methods
