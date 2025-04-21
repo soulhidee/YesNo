@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 
 final class ViewController: UIViewController {
     
@@ -6,7 +7,7 @@ final class ViewController: UIViewController {
     @IBOutlet weak var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var gifImageView: UIImageView!
+//    @IBOutlet weak var gifImageView: UIImageView!
     @IBOutlet weak var actionButton: UIButton!
     
     // MARK: - Properties
@@ -26,20 +27,33 @@ final class ViewController: UIViewController {
     // MARK: - Private Methods
     private func setupUI() {
         hideActivityIndicator()
+        setupGifWebViewStyle()
         setupGradientBackground()
         setupButtonShadow()
-        setupGifImageViewStyle()
+//      setupGifImageViewStyle()
         
     }
     
-    private func setupGifImageViewStyle() {
-        gifImageView.layer.backgroundColor = UIColor(named: "BGGifColor")?.cgColor ?? UIColor.gray.cgColor
-        gifImageView.layer.cornerRadius = 20
-        gifImageView.layer.shadowColor = UIColor.black.cgColor
-        gifImageView.layer.shadowOpacity = 0.1
-        gifImageView.layer.shadowRadius = 8
-        gifImageView.clipsToBounds = false
+    private func setupGifWebViewStyle() {
+        gifWebView.backgroundColor = UIColor(named: "BGGifColor") ?? .gray
+        gifWebView.isOpaque = false
+        gifWebView.scrollView.backgroundColor = .clear
+        gifWebView.scrollView.isScrollEnabled = false
+        gifWebView.scrollView.bounces = false
+        gifWebView.layer.cornerRadius = 20
+        gifWebView.layer.masksToBounds = true
     }
+        
+
+    
+//    private func setupGifImageViewStyle() {
+//        gifImageView.layer.backgroundColor = UIColor(named: "BGGifColor")?.cgColor ?? UIColor.gray.cgColor
+//        gifImageView.layer.cornerRadius = 20
+//        gifImageView.layer.shadowColor = UIColor.black.cgColor
+//        gifImageView.layer.shadowOpacity = 0.1
+//        gifImageView.layer.shadowRadius = 8
+//        gifImageView.clipsToBounds = false
+//    }
     
     private func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
