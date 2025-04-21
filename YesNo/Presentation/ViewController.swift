@@ -38,54 +38,13 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     // MARK: - Private Methods
     private func setupUI() {
         hideActivityIndicator()
-        setupGifWebViewStyle()
-        setupGradientBackground()
-        setupButtonShadow()
-        setupGifContainerStyle()
+        UIStyler.applyGradient(to: view)
+        UIStyler.styleContainer(gifContainerView)
+        UIStyler.styleWebView(gifWebView)
+        UIStyler.styleButton(actionButton)
     }
     
-    private func setupGradientBackground() {
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        
-        gradientLayer.colors = [
-            UIColor(named: "BGColorOne")?.cgColor ?? UIColor.white.cgColor,
-            UIColor(named: "BGColorTwo")?.cgColor ?? UIColor.white.cgColor
-        ]
-        
-        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        
-        view.layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
-    private func setupGifContainerStyle() {
-        gifContainerView.layer.cornerRadius = 20
-        gifContainerView.layer.backgroundColor = UIColor(named: "BGGifColor")?.cgColor ?? UIColor.gray.cgColor
-        gifContainerView.layer.shadowColor = UIColor.black.cgColor
-        gifContainerView.layer.shadowOpacity = 0.3
-        gifContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        gifContainerView.layer.shadowRadius = 8
-        gifContainerView.layer.masksToBounds = false
-    }
 
-    private func setupGifWebViewStyle() {
-        gifWebView.layer.cornerRadius = 20
-        gifWebView.layer.masksToBounds = true
-        gifWebView.isOpaque = false
-        gifWebView.backgroundColor = .clear
-        gifWebView.scrollView.backgroundColor = .clear
-        gifWebView.scrollView.isScrollEnabled = false
-        gifWebView.scrollView.bounces = false
-    }
-    
-    private func setupButtonShadow() {
-        actionButton.layer.shadowColor = UIColor.black.cgColor
-        actionButton.layer.shadowOpacity = 0.3
-        actionButton.layer.shadowOffset = CGSize(width: 0, height: 4)
-        actionButton.layer.shadowRadius = 8
-        actionButton.layer.masksToBounds = false
-    }
     
     private func showActivityIndicator() {
         activityIndicator.isHidden = false
