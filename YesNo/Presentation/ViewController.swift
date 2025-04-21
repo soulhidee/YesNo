@@ -14,16 +14,19 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     // MARK: - Properties
     private var gifLoader = GifLoader()
     private var currentAnswer: String?
+    private let soundManager = SoundManager()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         gifWebView.navigationDelegate = self
         setupUI()
+        soundManager.prepareSounds(named: ["buttonClick"])
     }
     
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
+        soundManager.playSound(named: "buttonClick")
         animateElementsOut()
         actionButton.isUserInteractionEnabled = false
         loadGif()
