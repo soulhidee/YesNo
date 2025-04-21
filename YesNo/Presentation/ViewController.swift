@@ -20,7 +20,6 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         gifWebView.navigationDelegate = self
         setupUI()
-        
     }
     
     // MARK: - Action
@@ -43,8 +42,6 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         UIStyler.styleWebView(gifWebView)
         UIStyler.styleButton(actionButton)
     }
-    
-
     
     private func showActivityIndicator() {
         activityIndicator.isHidden = false
@@ -73,31 +70,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     private func loadGifInWebView(from urlString: String) {
-
-        let htmlString = """
-        <html>
-            <head>
-                <style>
-                    body, html {
-                        margin: 0;
-                        padding: 0;
-                        height: 100%;
-                        width: 100%;
-                        overflow: hidden;
-                    }
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                </style>
-            </head>
-            <body>
-                <img src="\(urlString)" />
-            </body>
-        </html>
-        """
-    
+        let htmlString = GifHTMLBuilder.html(for: urlString)
         gifWebView.loadHTMLString(htmlString, baseURL: nil)
     }
     
