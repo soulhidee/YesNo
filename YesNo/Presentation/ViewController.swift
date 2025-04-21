@@ -1,9 +1,10 @@
 import UIKit
 import WebKit
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Outlets
+    @IBOutlet weak var yesNoLabel: UILabel!
     @IBOutlet var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -11,17 +12,20 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     private var gifLoader = GifLoader()
+    private var currentAnswer: String?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        gifWebView.navigationDelegate = self
         setupUI()
+        
     }
     
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         questionLabel.isHidden = true
-        
+        yesNoLabel.alpha = .zero
         loadGif()
         
     }
@@ -86,6 +90,7 @@ final class ViewController: UIViewController {
                 
                 switch result {
                 case .success(let gifResponse):
+                    self?.currentAnswer = gifResponse.answer
                     self?.loadGifInWebView(from: gifResponse.gif)
                 case .failure(let error):
                     print("Ошибка загрузки гифки: \(error.localizedDescription)")
@@ -121,5 +126,12 @@ final class ViewController: UIViewController {
         """
     
         gifWebView.loadHTMLString(htmlString, baseURL: nil)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        yesNoLabel.text = currentAnswer?.capitalized
+        UIView.animate(withDuration: 0.3) {
+            self.yesNoLabel.alpha = 1
+        }
     }
 }
