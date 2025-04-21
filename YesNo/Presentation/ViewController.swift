@@ -61,8 +61,9 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     
     private func setupGifContainerStyle() {
         gifContainerView.layer.cornerRadius = 20
+        gifContainerView.layer.backgroundColor = UIColor(named: "BGGifColor")?.cgColor ?? UIColor.gray.cgColor
         gifContainerView.layer.shadowColor = UIColor.black.cgColor
-        gifContainerView.layer.shadowOpacity = 0.1
+        gifContainerView.layer.shadowOpacity = 0.3
         gifContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
         gifContainerView.layer.shadowRadius = 8
         gifContainerView.layer.masksToBounds = false
@@ -80,7 +81,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     
     private func setupButtonShadow() {
         actionButton.layer.shadowColor = UIColor.black.cgColor
-        actionButton.layer.shadowOpacity = 0.1
+        actionButton.layer.shadowOpacity = 0.3
         actionButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         actionButton.layer.shadowRadius = 8
         actionButton.layer.masksToBounds = false
