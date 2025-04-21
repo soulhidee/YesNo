@@ -4,12 +4,13 @@ import WebKit
 final class ViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var gifWebView: WKWebView!
+    @IBOutlet var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var actionButton: UIButton!
     
     // MARK: - Properties
+    private var gifLoader = GifLoader()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -20,7 +21,8 @@ final class ViewController: UIViewController {
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         questionLabel.isHidden = true
-        showActivityIndicator()
+        loadGif()
+        
     }
     
     // MARK: - Private Methods
@@ -29,7 +31,6 @@ final class ViewController: UIViewController {
         setupGifWebViewStyle()
         setupGradientBackground()
         setupButtonShadow()
-        //      setupGifImageViewStyle()
         
     }
     
@@ -74,5 +75,28 @@ final class ViewController: UIViewController {
     private func hideActivityIndicator() {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
+    }
+    
+    private func loadGif() {
+            activityIndicator.startAnimating()
+            
+            gifLoader.loadGif { [weak self] result in
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                    
+                    switch result {
+                    case .success(let gifResponse):
+                        self?.loadGifInWebView(from: gifResponse.gif)
+                    case .failure(let error):
+                        print("Ошибка загрузки гифки: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+    
+    private func loadGifInWebView(from urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        let request = URLRequest(url: url)
+        gifWebView.load(request)
     }
 }
