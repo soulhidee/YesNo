@@ -19,16 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qyB-Fx-FOs">
-                                <rect key="frame" x="19" y="118" width="355" height="666"/>
+                                <rect key="frame" x="19" y="138" width="355" height="646"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DV-Em-Dbn" userLabel="Gif">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZZ-53-Yru">
-                                                <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="500"/>
                                                 <subviews>
                                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwk-5B-JlT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="500"/>
                                                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <wkWebViewConfiguration key="configuration">
                                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -47,7 +47,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-hh-9it" userLabel="YesNo">
-                                        <rect key="frame" x="124.66666666666666" y="540" width="106" height="36"/>
+                                        <rect key="frame" x="124.66666666666666" y="520" width="106" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YesNo?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyW-z1-tWV" userLabel="yesNoLabel">
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="36"/>
@@ -58,7 +58,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ejo-Dg-a3O" userLabel="Button">
-                                        <rect key="frame" x="43" y="596" width="269" height="70"/>
+                                        <rect key="frame" x="43" y="576" width="269" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xn9-J2-ypO">
                                                 <rect key="frame" x="0.0" y="0.0" width="269" height="70"/>
@@ -91,11 +91,11 @@
                                 </constraints>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
-                                <rect key="frame" x="186.66666666666666" y="368" width="20" height="20"/>
+                                <rect key="frame" x="186.66666666666666" y="378" width="20" height="20"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJg-5H-ESJ">
-                                <rect key="frame" x="63" y="79.666666666666686" width="267" height="597"/>
+                                <rect key="frame" x="63" y="89.666666666666686" width="267" height="597"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="500"/>
                                 <color key="textColor" red="0.22745098039215686" green="0.29803921568627451" blue="0.47843137254901957" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -111,7 +111,7 @@
                             <constraint firstItem="nUY-cf-ACL" firstAttribute="centerX" secondItem="Nwk-5B-JlT" secondAttribute="centerX" id="PmO-q7-gkq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qyB-Fx-FOs" secondAttribute="trailing" constant="19" id="euF-62-RPJ"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="frP-XN-bTU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="qyB-Fx-FOs" secondAttribute="top" id="ufs-Vz-Suw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="qyB-Fx-FOs" secondAttribute="top" constant="-20" id="ufs-Vz-Suw"/>
                         </constraints>
                     </view>
                     <connections>
