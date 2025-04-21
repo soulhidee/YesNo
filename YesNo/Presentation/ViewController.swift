@@ -7,7 +7,6 @@ final class ViewController: UIViewController {
     @IBOutlet weak var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-//    @IBOutlet weak var gifImageView: UIImageView!
     @IBOutlet weak var actionButton: UIButton!
     
     // MARK: - Properties
@@ -30,30 +29,9 @@ final class ViewController: UIViewController {
         setupGifWebViewStyle()
         setupGradientBackground()
         setupButtonShadow()
-//      setupGifImageViewStyle()
+        //      setupGifImageViewStyle()
         
     }
-    
-    private func setupGifWebViewStyle() {
-        gifWebView.backgroundColor = UIColor(named: "BGGifColor") ?? .gray
-        gifWebView.isOpaque = false
-        gifWebView.scrollView.backgroundColor = .clear
-        gifWebView.scrollView.isScrollEnabled = false
-        gifWebView.scrollView.bounces = false
-        gifWebView.layer.cornerRadius = 20
-        gifWebView.layer.masksToBounds = true
-    }
-        
-
-    
-//    private func setupGifImageViewStyle() {
-//        gifImageView.layer.backgroundColor = UIColor(named: "BGGifColor")?.cgColor ?? UIColor.gray.cgColor
-//        gifImageView.layer.cornerRadius = 20
-//        gifImageView.layer.shadowColor = UIColor.black.cgColor
-//        gifImageView.layer.shadowOpacity = 0.1
-//        gifImageView.layer.shadowRadius = 8
-//        gifImageView.clipsToBounds = false
-//    }
     
     private func setupGradientBackground() {
         let gradientLayer = CAGradientLayer()
@@ -68,6 +46,16 @@ final class ViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
         
         view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    private func setupGifWebViewStyle() {
+        gifWebView.backgroundColor = UIColor(named: "BGGifColor") ?? .gray
+        gifWebView.isOpaque = false
+        gifWebView.scrollView.backgroundColor = .clear
+        gifWebView.scrollView.isScrollEnabled = false
+        gifWebView.scrollView.bounces = false
+        gifWebView.layer.cornerRadius = 20
+        gifWebView.layer.masksToBounds = true
     }
     
     private func setupButtonShadow() {
@@ -88,4 +76,3 @@ final class ViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
 }
-
