@@ -25,7 +25,9 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         questionLabel.isHidden = true
-        yesNoLabel.alpha = .zero
+        UIView.animate(withDuration: 0.3) {
+            self.yesNoLabel.alpha = .zero
+        }
         loadGif()
         
     }
@@ -86,14 +88,13 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         showActivityIndicator()
         gifLoader.loadGif { [weak self] result in
             DispatchQueue.main.async {
-                self?.hideActivityIndicator()
-                
                 switch result {
                 case .success(let gifResponse):
                     self?.currentAnswer = gifResponse.answer
                     self?.loadGifInWebView(from: gifResponse.gif)
                 case .failure(let error):
                     print("Ошибка загрузки гифки: \(error.localizedDescription)")
+                    self?.hideActivityIndicator()
                 }
             }
         }
@@ -129,6 +130,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        hideActivityIndicator()
         yesNoLabel.text = currentAnswer?.capitalized
         UIView.animate(withDuration: 0.3) {
             self.yesNoLabel.alpha = 1
