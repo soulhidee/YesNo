@@ -25,10 +25,12 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
-        questionLabel.isHidden = true
         UIView.animate(withDuration: 0.3) {
             self.yesNoLabel.alpha = .zero
+            self.gifWebView.alpha = .zero
+            self.questionLabel.alpha = .zero
         }
+        actionButton.isUserInteractionEnabled = false
         loadGif()
         
     }
@@ -144,6 +146,8 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         yesNoLabel.text = currentAnswer?.capitalized
         UIView.animate(withDuration: 0.3) {
             self.yesNoLabel.alpha = 1
+            self.gifWebView.alpha = 1
         }
+        actionButton.isUserInteractionEnabled = true
     }
 }
