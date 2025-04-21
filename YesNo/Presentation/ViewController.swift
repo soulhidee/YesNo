@@ -19,6 +19,7 @@ final class ViewController: UIViewController {
     // MARK: - Action
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         questionLabel.isHidden = true
+        showActivityIndicator()
     }
     
     // MARK: - Private Methods
