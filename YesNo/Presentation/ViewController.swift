@@ -4,6 +4,7 @@ import WebKit
 final class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Outlets
+    @IBOutlet weak var gifContainerView: UIView!
     @IBOutlet weak var yesNoLabel: UILabel!
     @IBOutlet var gifWebView: WKWebView!
     @IBOutlet weak var questionLabel: UILabel!
@@ -38,7 +39,7 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         setupGifWebViewStyle()
         setupGradientBackground()
         setupButtonShadow()
-        
+        setupGifContainerStyle()
     }
     
     private func setupGradientBackground() {
@@ -56,14 +57,23 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    private func setupGifContainerStyle() {
+        gifContainerView.layer.cornerRadius = 20
+        gifContainerView.layer.shadowColor = UIColor.black.cgColor
+        gifContainerView.layer.shadowOpacity = 0.1
+        gifContainerView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        gifContainerView.layer.shadowRadius = 8
+        gifContainerView.layer.masksToBounds = false
+    }
+
     private func setupGifWebViewStyle() {
-        gifWebView.backgroundColor = UIColor(named: "BGGifColor") ?? .gray
+        gifWebView.layer.cornerRadius = 20
+        gifWebView.layer.masksToBounds = true
         gifWebView.isOpaque = false
+        gifWebView.backgroundColor = .clear
         gifWebView.scrollView.backgroundColor = .clear
         gifWebView.scrollView.isScrollEnabled = false
         gifWebView.scrollView.bounces = false
-        gifWebView.layer.cornerRadius = 20
-        gifWebView.layer.masksToBounds = true
     }
     
     private func setupButtonShadow() {

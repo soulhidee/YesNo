@@ -24,14 +24,26 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7DV-Em-Dbn" userLabel="Gif">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
                                         <subviews>
-                                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwk-5B-JlT">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZZ-53-Yru">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
-                                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <wkWebViewConfiguration key="configuration">
-                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                    <wkPreferences key="preferences"/>
-                                                </wkWebViewConfiguration>
-                                            </wkWebView>
+                                                <subviews>
+                                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwk-5B-JlT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="520"/>
+                                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <wkWebViewConfiguration key="configuration">
+                                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                            <wkPreferences key="preferences"/>
+                                                        </wkWebViewConfiguration>
+                                                    </wkWebView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="Nwk-5B-JlT" firstAttribute="leading" secondItem="uZZ-53-Yru" secondAttribute="leading" id="2se-cc-bOr"/>
+                                                    <constraint firstItem="Nwk-5B-JlT" firstAttribute="top" secondItem="uZZ-53-Yru" secondAttribute="top" id="qyr-oa-EdD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Nwk-5B-JlT" secondAttribute="bottom" id="vWB-9o-MYE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Nwk-5B-JlT" secondAttribute="trailing" id="xHQ-gR-LRh"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P6O-hh-9it" userLabel="YesNo">
@@ -78,12 +90,14 @@
                                     <constraint firstItem="7DV-Em-Dbn" firstAttribute="leading" secondItem="qyB-Fx-FOs" secondAttribute="leading" id="smX-W6-9Fr"/>
                                 </constraints>
                             </stackView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nUY-cf-ACL" userLabel="Activity Indicator">
                                 <rect key="frame" x="186.66666666666666" y="368" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJg-5H-ESJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJg-5H-ESJ">
                                 <rect key="frame" x="63" y="79.666666666666686" width="267" height="597"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="500"/>
                                 <color key="textColor" red="0.22745098039215686" green="0.29803921568627451" blue="0.47843137254901957" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -92,19 +106,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="UJg-5H-ESJ" firstAttribute="centerX" secondItem="Nwk-5B-JlT" secondAttribute="centerX" id="8kO-MS-k6m"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M88-5K-3GU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qyB-Fx-FOs" secondAttribute="trailing" constant="19" id="euF-62-RPJ"/>
                             <constraint firstItem="qyB-Fx-FOs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="19" id="frP-XN-bTU"/>
-                            <constraint firstItem="nUY-cf-ACL" firstAttribute="centerX" secondItem="Nwk-5B-JlT" secondAttribute="centerX" id="g13-8T-J3o"/>
-                            <constraint firstItem="UJg-5H-ESJ" firstAttribute="centerY" secondItem="Nwk-5B-JlT" secondAttribute="centerY" id="gub-fz-CYO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="qyB-Fx-FOs" secondAttribute="top" id="ufs-Vz-Suw"/>
-                            <constraint firstItem="nUY-cf-ACL" firstAttribute="centerY" secondItem="Nwk-5B-JlT" secondAttribute="centerY" id="yen-Tf-Luy"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="xn9-J2-ypO" id="TaB-DD-mHP"/>
                         <outlet property="activityIndicator" destination="nUY-cf-ACL" id="G2G-Q4-lXg"/>
+                        <outlet property="gifContainerView" destination="uZZ-53-Yru" id="WjB-pP-cwv"/>
                         <outlet property="gifWebView" destination="Nwk-5B-JlT" id="rc2-Fj-pUr"/>
                         <outlet property="questionLabel" destination="UJg-5H-ESJ" id="2Ki-s4-7Ws"/>
                         <outlet property="yesNoLabel" destination="iyW-z1-tWV" id="Cd3-CM-f7B"/>
