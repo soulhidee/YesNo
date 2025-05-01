@@ -1,7 +1,7 @@
 import UIKit
 import WebKit
 
-final class ViewController: UIViewController, WKNavigationDelegate {
+final class MainViewController: UIViewController, WKNavigationDelegate, MainViewProtocol {
     
     // MARK: - Outlets
     @IBOutlet weak var gifContainerView: UIView!
@@ -12,24 +12,22 @@ final class ViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var actionButton: UIButton!
     
     // MARK: - Properties
-    private var gifLoader = GifLoader()
-    private var currentAnswer: String?
     private let soundManager = SoundManager()
+    private var presenter: MainPresenter!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = MainPresenter(view: self)
         gifWebView.navigationDelegate = self
         setupUI()
         soundManager.prepareSounds(named: ["buttonClick", "yes", "no"])
     }
     
-    // MARK: - Action
+    // MARK: - Actions
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         soundManager.playSound(named: "buttonClick")
-        animateElementsOut()
-        actionButton.isUserInteractionEnabled = false
-        loadGif()
+        presenter.actionButtonTapped()
     }
     
     // MARK: - Private Methods
@@ -41,7 +39,8 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         UIStyler.styleButton(actionButton)
     }
     
-    private func animateElementsOut() {
+    // MARK: - Animations
+    func animateElementsOut() {
         UIView.animate(withDuration: 0.3) {
             self.yesNoLabel.alpha = .zero
             self.gifWebView.alpha = .zero
@@ -49,55 +48,50 @@ final class ViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    private func showActivityIndicator() {
+    // MARK: - Activity Indicator
+    func showActivityIndicator() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
     
-    private func hideActivityIndicator() {
+    func hideActivityIndicator() {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
     
-    
-    private func loadGif() {
-        showActivityIndicator()
-        gifLoader.loadGif { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let gifResponse):
-                    self?.currentAnswer = gifResponse.answer
-                    self?.loadGifInWebView(from: gifResponse.gif)
-                case .failure(let error):
-                    print("Ошибка загрузки гифки: \(error.localizedDescription)")
-                    self?.hideActivityIndicator()
-                }
-            }
-        }
-    }
-    
-    private func loadGifInWebView(from urlString: String) {
+    // MARK: - Gif Loading
+    func loadGifInWebView(from urlString: String) {
         let htmlString = GifHTMLBuilder.html(for: urlString)
         gifWebView.loadHTMLString(htmlString, baseURL: nil)
     }
     
+    // MARK: - WKWebView Delegate
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         hideActivityIndicator()
-        yesNoLabel.text = currentAnswer?.capitalized
+        yesNoLabel.text = presenter?.getFormattedAnswer()
         
-        if let answer = currentAnswer?.lowercased() {
+        if let answer = presenter?.getNormalizedAnswer() {
             if answer == "yes" {
                 soundManager.playSound(named: "yes")
             } else if answer == "no" {
                 soundManager.playSound(named: "no")
             }
         }
-
+        
         UIView.animate(withDuration: 0.3) {
             self.yesNoLabel.alpha = 1
             self.gifWebView.alpha = 1
         }
-
+        
         actionButton.isUserInteractionEnabled = true
+    }
+    
+    // MARK: - Button Control
+    func enableButton() {
+        actionButton.isUserInteractionEnabled = true
+    }
+    
+    func disableButton() {
+        actionButton.isUserInteractionEnabled = false
     }
 }

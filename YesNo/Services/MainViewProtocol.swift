@@ -1,9 +1,10 @@
 import Foundation
 
 protocol MainViewProtocol: AnyObject {
-    func showGif(with html: String, answer: String)
-    func showLoading()
-    func hideLoading()
+    func animateElementsOut()
+    func showActivityIndicator()
+    func hideActivityIndicator()
+    func loadGifInWebView(from urlString: String)
     func enableButton()
     func disableButton()
 }
