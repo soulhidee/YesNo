@@ -94,12 +94,8 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     }
     
     // MARK: - Button Control
-    func enableButton() {
-        actionButton.isUserInteractionEnabled = true
-    }
-    
-    func disableButton() {
-        actionButton.isUserInteractionEnabled = false
-    }
+    func enableButton(_ enabled: Bool) {
+            actionButton.isUserInteractionEnabled = enabled
+        }
     
 }

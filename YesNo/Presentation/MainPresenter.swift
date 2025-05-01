@@ -20,7 +20,7 @@ final class MainPresenter {
     func actionButtonTapped() {
         view?.changeButtonTextColor()
         view?.animateElementsOut()
-        view?.disableButton()
+        view?.enableButton(false)
         loadGif()
     }
     
