@@ -1,3 +1,48 @@
-.DS_Store
+# Xcode
+*.xcworkspace
+!default.xcworkspace
+*.xcuserdata
+*.xcuserdatad
+*.xcodeproj/project.xcworkspace/xcuserdata
+*.xcodeproj/xcuserdata
 
-*.xcuserstate
+# Derived data
+DerivedData/
+build/
+*.build/
+
+# SwiftPM
+.swiftpm
+.build/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Archives
+*.xcarchive
+
+# Other
+*.moved-aside
+*.xcscmblueprint
+*.orig
+*.DS_Store
+.idea/
+*.hmap
+*.ipa
+
+# Symbolicated crash logs
+*.dSYM.zip
+*.dSYM
+
+# Playground
+timeline.xctimeline
+playground.xcworkspace
