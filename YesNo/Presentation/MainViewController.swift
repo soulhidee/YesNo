@@ -48,6 +48,17 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
         }
     }
     
+    func changeButtonTextColor() {
+        let tappedColor = UIColor(named: "TapTextColor") ?? .lightGray
+        let defaultColor = UIColor(named: "TextColor") ?? .white
+        
+        actionButton.setTitleColor(tappedColor, for: .normal)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.actionButton.setTitleColor(defaultColor, for: .normal)
+        }
+    }
+    
     // MARK: - Activity Indicator
     func showActivityIndicator() {
         activityIndicator.isHidden = false
@@ -94,4 +105,5 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     func disableButton() {
         actionButton.isUserInteractionEnabled = false
     }
+    
 }

@@ -18,6 +18,7 @@ final class MainPresenter {
     
     // MARK: - Actions
     func actionButtonTapped() {
+        view?.changeButtonTextColor()
         view?.animateElementsOut()
         view?.disableButton()
         loadGif()

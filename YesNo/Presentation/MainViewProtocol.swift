@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 protocol MainViewProtocol: AnyObject {
     func animateElementsOut()
@@ -7,4 +8,5 @@ protocol MainViewProtocol: AnyObject {
     func loadGifInWebView(from urlString: String)
     func enableButton()
     func disableButton()
+    func changeButtonTextColor()
 }
