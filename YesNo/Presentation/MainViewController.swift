@@ -13,7 +13,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     
     // MARK: - Properties
     private let soundManager = SoundManager()
-    private var presenter: MainPresenter!
+    private var presenter: MainPresenter?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     // MARK: - Actions
     @IBAction func actionButtonClicked(_ sender: UIButton) {
         soundManager.playSound(named: "buttonClick")
-        presenter.actionButtonTapped()
+        presenter?.actionButtonTapped()
     }
     
     // MARK: - Private Methods
