@@ -20,4 +20,18 @@ final class MainPresenterTests: XCTestCase {
         presenter = nil
         super.tearDown()
     }
+    
+    func testActionButtonTapped() throws {
+        presenter.actionButtonTapped()
+        
+        mainView.enableButtonHandler = { enabled in
+            XCTAssertFalse(enabled)
+        }
+        
+        XCTAssertTrue(mainView.changeButtonTextColorCalled, "Должен быть вызван changeButtonTextColor")
+        XCTAssertTrue(mainView.enableButtonCalled, "Должен быть вызван enableButton")
+        XCTAssertTrue(gifLoader.loadGifCalled, "Должен быть вызваен loadGif")
+    }
+    
+    
 }
