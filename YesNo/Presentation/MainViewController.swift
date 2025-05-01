@@ -32,7 +32,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     
     // MARK: - Private Methods
     private func setupUI() {
-        hideActivityIndicator()
+        setActivityIndicator(visible: false)
         UIStyler.applyGradient(to: view)
         UIStyler.styleContainer(gifContainerView)
         UIStyler.styleWebView(gifWebView)
@@ -60,14 +60,10 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     }
     
     // MARK: - Activity Indicator
-    func showActivityIndicator() {
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-    }
     
-    func hideActivityIndicator() {
-        activityIndicator.isHidden = true
-        activityIndicator.stopAnimating()
+    func setActivityIndicator(visible: Bool) {
+        activityIndicator.isHidden = !visible
+        visible ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
     }
     
     // MARK: - Gif Loading
@@ -78,7 +74,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     
     // MARK: - WKWebView Delegate
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        hideActivityIndicator()
+        setActivityIndicator(visible: false)
         yesNoLabel.text = presenter?.getFormattedAnswer()
         
         if let answer = presenter?.getNormalizedAnswer() {

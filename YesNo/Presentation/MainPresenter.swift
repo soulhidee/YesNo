@@ -26,7 +26,7 @@ final class MainPresenter {
     
     // MARK: - Private Methods
     private func loadGif() {
-        view?.showActivityIndicator()
+        view?.setActivityIndicator(visible: true)
         gifLoader.loadGif { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -35,7 +35,7 @@ final class MainPresenter {
                     self?.view?.loadGifInWebView(from: gifResponse.gif)
                 case .failure(let error):
                     print("Ошибка загрузки гифки: \(error.localizedDescription)")
-                    self?.view?.hideActivityIndicator()
+                    self?.view?.setActivityIndicator(visible: false)
                 }
             }
         }
