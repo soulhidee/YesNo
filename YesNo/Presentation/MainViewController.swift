@@ -13,12 +13,20 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     
     // MARK: - Properties
     private let soundManager = SoundManager()
+    private var alertPresenter: AlertPresenter?
     private var presenter: MainPresenter?
+
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MainPresenter(view: self)
+        alertPresenter = AlertPresenter(presentingController: self)
+        presenter = MainPresenter(
+            view: self,
+            gifLoader: GifLoader(),
+            alertPresenter: alertPresenter!
+        )
+        
         gifWebView.navigationDelegate = self
         setupUI()
         soundManager.prepareSounds(named: ["buttonClick", "yes", "no"])
@@ -97,13 +105,4 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     func enableButton(_ enabled: Bool) {
             actionButton.isUserInteractionEnabled = enabled
         }
-    
-    func showAlert(model: AlertModel) {
-        let alert = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: model.buttonText, style: .default) { _ in
-            model.onDismiss?() 
-        })
-        present(alert, animated: true)
-    }
-
 }
