@@ -52,4 +52,7 @@ final class MainPresenter {
     }
     
 
+    func handleError(_ error: Error) {
+        let appError:
+    }
 }
