@@ -100,4 +100,9 @@ final class MainPresenterTests: XCTestCase {
         XCTAssertEqual(loadGifCallCount, 2, "loadGif должен быть вызван дважды: изначально и после повтора")
     }
     
+    func testGetFormattedAnswer() throws {
+        presenter.setTestAnswer("yes")
+        let result = presenter.getFormattedAnswer()
+        XCTAssertEqual(result, "Yes")
+    }
 }

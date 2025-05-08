@@ -67,4 +67,12 @@ final class MainPresenter {
         )
         alertPresenter.show(alert: alert)
     }
+
+#if DEBUG
+func setTestAnswer(_ answer: String?) {
+    self.currentAnswer = answer
+}
+#endif
+    
+    
 }
