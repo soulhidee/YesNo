@@ -33,5 +33,38 @@ final class MainPresenterTests: XCTestCase {
         XCTAssertTrue(gifLoader.loadGifCalled, "Должен быть вызваен loadGif")
     }
     
+    func testLoadGifSuccess() throws {
+        let expectedURL = "https://test.com/gif"
+        let expectedAnswer = "yes"
+        
+        gifLoader.resultToReturn = .success(
+            GifResponse(gif: expectedURL, answer: expectedAnswer)
+        )
+        
+        let gifLoaderExpecration = expectation(description: "Гифка должна быть загружена во view")
+        let activityIndicatorExpectation = expectation(description: "Индикатор должен быть скрыт после загрузки загрузки")
+        
+        mainView.loadGifInWebViewHandler = { urlString in
+            XCTAssertEqual(urlString, expectedURL, "URL гифки должен совпадать")
+            gifLoaderExpecration.fulfill()
+        }
+        
+        mainView.setActivityIndicatorHandler = { visible in
+            if visible {
+                XCTAssertTrue(visible, "ActivityIndicator должен быть показан")
+            } else {
+                activityIndicatorExpectation.fulfill()
+            }
+        }
+        
+        presenter.loadGifIfNeeded()
+        
+        wait(for: [gifLoaderExpecration, activityIndicatorExpectation], timeout: 1.0)
+        
+        XCTAssertTrue(gifLoader.loadGifCalled, "Метод loadGif должен быть вызван")
+        XCTAssertTrue(mainView.setActivityIndicatorCalled, "Метод setActivityIndicator должен быть вызван")
+        XCTAssertTrue(mainView.loadGifInWebViewCalled, "Метод loadGifInWebView должен быть вызван")
+        XCTAssertEqual(presenter.getNormalizedAnswer(), expectedAnswer, "Ответ должен быть сохранен корректно")
+    }
     
 }

@@ -33,6 +33,7 @@ final class MainPresenter {
                 case .success(let gifResponse):
                     self?.currentAnswer = gifResponse.answer
                     self?.view?.loadGifInWebView(from: gifResponse.gif)
+                    self?.view?.setActivityIndicator(visible: false)
                 case .failure(let error):
                     print("Ошибка загрузки гифки: \(error.localizedDescription)")
                     self?.view?.setActivityIndicator(visible: false)
@@ -48,5 +49,9 @@ final class MainPresenter {
     
     func getNormalizedAnswer() -> String? {
         return currentAnswer?.lowercased()
+    }
+    
+    func loadGifIfNeeded() {
+        loadGif()
     }
 }
