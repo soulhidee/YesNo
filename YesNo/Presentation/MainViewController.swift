@@ -97,5 +97,13 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     func enableButton(_ enabled: Bool) {
             actionButton.isUserInteractionEnabled = enabled
         }
+    
+    func showAlert(model: AlertModel) {
+        let alert = UIAlertController(title: model.title, message: model.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: model.buttonText, style: .default) { _ in
+            model.onDismiss?() 
+        })
+        present(alert, animated: true)
+    }
 
 }

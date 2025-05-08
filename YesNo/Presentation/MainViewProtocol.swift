@@ -7,5 +7,5 @@ protocol MainViewProtocol: AnyObject {
     func changeButtonTextColor()
     func setActivityIndicator(visible: Bool)
     func enableButton(_ enabled: Bool)
-    
+    func showAlert(model: AlertModel)
 }
