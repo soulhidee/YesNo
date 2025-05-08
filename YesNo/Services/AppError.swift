@@ -16,7 +16,7 @@ enum AppError: LocalizedError {
         case .decoding(let error):
             return "Ошибка при декодировании данных: \(error.localizedDescription)"
         case .network(let error):
-            return "Сетевая ошибка: \(error.localizedDescription)"
+            return error.localizedDescription
         case .timeoutError:
             return "Ошибка соединения: Тайм-аут."
         }
