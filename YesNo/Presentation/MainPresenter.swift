@@ -6,13 +6,13 @@ final class MainPresenter {
     private weak var view: MainViewProtocol?
     private let gifLoader: GifLoading
     private var currentAnswer: String?
-    private let alertPresenter: AlertPresenter
+    private let alertPresenter: AlertPresenterProtocol
     
     // MARK: - Initializer
     init(
         view: MainViewProtocol,
         gifLoader: GifLoading = GifLoader(),
-        alertPresenter: AlertPresenter
+        alertPresenter: AlertPresenterProtocol
     ) {
         self.view = view
         self.gifLoader = gifLoader
