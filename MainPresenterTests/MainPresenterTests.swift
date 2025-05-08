@@ -6,12 +6,14 @@ final class MainPresenterTests: XCTestCase {
     var mainView: MainViewMock!
     var gifLoader: GifLoaderMock!
     var presenter: MainPresenter!
+    var alertPresenter: AlertPresenterMock!
     
     override func setUp() {
         super.setUp()
         mainView = MainViewMock()
         gifLoader = GifLoaderMock()
-        presenter = MainPresenter(view: mainView, gifLoader: gifLoader)
+        alertPresenter = AlertPresenterMock()
+        presenter = MainPresenter(view: mainView, gifLoader: gifLoader, alertPresenter: alertPresenter)
     }
     
     override func tearDown() {
@@ -67,5 +69,35 @@ final class MainPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.getNormalizedAnswer(), expectedAnswer, "Ответ должен быть сохранен корректно")
     }
     
+    func testLoadGifFailure() throws {
+        let error = URLError(.timedOut)
+        var loadGifCallCount = 0
+        
+        gifLoader.loadGifStub = { handler in
+            loadGifCallCount += 1
+            
+            if loadGifCallCount == 1 {
+                handler(.failure(error))
+            } else {
+                handler(.success(GifResponse(gif: "https://test.com", answer: "yes")))
+            }
+            
+        }
+        
+        let expectation = expectation(description: "Повторная загрузка после ошибки и скрытие индикатора")
+        
+        mainView.setActivityIndicatorHandler = { visible in
+              if !visible && loadGifCallCount == 2 {
+                  expectation.fulfill()
+              }
+          }
+        
+        presenter.loadGifIfNeeded()
+        
+        wait(for: [expectation], timeout: 2.0)
+        
+        XCTAssertTrue(alertPresenter.showAlertCalled, "Алерт должен быть показан при ошибке загрузки")
+        XCTAssertEqual(loadGifCallCount, 2, "loadGif должен быть вызван дважды: изначально и после повтора")
+    }
     
 }

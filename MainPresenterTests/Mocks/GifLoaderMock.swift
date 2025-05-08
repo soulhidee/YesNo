@@ -4,11 +4,15 @@ import Foundation
 final class GifLoaderMock: GifLoading {
     var loadGifCalled = false
     var resultToReturn: Result<GifResponse, Error>?
-    
-    func loadGif(handler: @escaping (Result<YesNo.GifResponse, Error>) -> Void) {
+
+    var loadGifStub: ((@escaping (Result<GifResponse, Error>) -> Void) -> Void)?
+
+    func loadGif(handler: @escaping (Result<GifResponse, Error>) -> Void) {
         loadGifCalled = true
-        
-        if let result = resultToReturn {
+
+        if let stub = loadGifStub {
+            stub(handler)
+        } else if let result = resultToReturn {
             handler(result)
         }
     }

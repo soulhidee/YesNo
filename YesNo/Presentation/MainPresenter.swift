@@ -50,6 +50,9 @@ final class MainPresenter {
         return currentAnswer?.capitalized
     }
     
+    func loadGifIfNeeded() {
+        loadGif()
+    }
     func getNormalizedAnswer() -> String? {
         return currentAnswer?.lowercased()
     }
