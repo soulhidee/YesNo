@@ -67,4 +67,5 @@ final class MainPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.getNormalizedAnswer(), expectedAnswer, "Ответ должен быть сохранен корректно")
     }
     
+    
 }
