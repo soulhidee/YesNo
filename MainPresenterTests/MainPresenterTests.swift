@@ -105,4 +105,10 @@ final class MainPresenterTests: XCTestCase {
         let result = presenter.getFormattedAnswer()
         XCTAssertEqual(result, "Yes")
     }
+    
+    func testGetNormalizedAnswer() throws {
+        presenter.setTestAnswer("YES")
+        let result = presenter.getNormalizedAnswer()
+        XCTAssertEqual(result, "yes")
+    }
 }
