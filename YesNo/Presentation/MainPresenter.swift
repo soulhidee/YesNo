@@ -51,7 +51,5 @@ final class MainPresenter {
         return currentAnswer?.lowercased()
     }
     
-    func loadGifIfNeeded() {
-        loadGif()
-    }
+
 }

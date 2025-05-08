@@ -97,4 +97,5 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     func enableButton(_ enabled: Bool) {
             actionButton.isUserInteractionEnabled = enabled
         }
+
 }
