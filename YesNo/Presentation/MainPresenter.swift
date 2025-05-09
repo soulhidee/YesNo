@@ -27,6 +27,19 @@ final class MainPresenter {
         loadGif()
     }
     
+    func loadGifIfNeeded() {
+        loadGif()
+    }
+
+    // MARK: - Helpers
+    func getFormattedAnswer() -> String? {
+        return currentAnswer?.capitalized
+    }
+    
+    func getNormalizedAnswer() -> String? {
+        return currentAnswer?.lowercased()
+    }
+    
     // MARK: - Private Methods
     private func loadGif() {
         view?.setActivityIndicator(visible: true)
@@ -45,18 +58,6 @@ final class MainPresenter {
         }
     }
     
-    // MARK: - Helpers
-    func getFormattedAnswer() -> String? {
-        return currentAnswer?.capitalized
-    }
-    
-    func loadGifIfNeeded() {
-        loadGif()
-    }
-    func getNormalizedAnswer() -> String? {
-        return currentAnswer?.lowercased()
-    }
-    
     private func handleError(_ error: Error) {
         let appError = error.toAppError()
         let alert = AlertFactory.createAlert(
@@ -68,11 +69,10 @@ final class MainPresenter {
         alertPresenter.show(alert: alert)
     }
 
-#if DEBUG
-func setTestAnswer(_ answer: String?) {
-    self.currentAnswer = answer
-}
-#endif
-    
-    
+    // MARK: - DEBUG
+    #if DEBUG
+    func setTestAnswer(_ answer: String?) {
+        self.currentAnswer = answer
+    }
+    #endif
 }
