@@ -26,8 +26,8 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
             gifLoader: GifLoader(),
             alertPresenter: alertPresenter!
         )
-        
         gifWebView.navigationDelegate = self
+        
         setupUI()
         soundManager.prepareSounds(named: ["buttonClick", "yes", "no"])
     }
@@ -40,6 +40,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
     
     // MARK: - Private Methods
     private func setupUI() {
+        gifWebView.isUserInteractionEnabled = false
         setActivityIndicator(visible: false)
         UIStyler.applyGradient(to: view)
         UIStyler.styleContainer(gifContainerView)
@@ -98,7 +99,7 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
             self.gifWebView.alpha = 1
         }
         
-        actionButton.isUserInteractionEnabled = true
+        enableButton(true)
     }
     
     // MARK: - Button Control
