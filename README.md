@@ -2,6 +2,8 @@
 
 **YesNoApp** — это мой первый пет-проект на Swift, который демонстрирует работу с архитектурой MVP, сетевыми запросами и отображением GIF через WKWebView. Пользователь может нажимать кнопку, и приложение отобразит случайный GIF с ответом "Yes" или "No" на основе данных, полученных с API. Дизайн приложения был разработан мной с нуля, что позволило мне улучшить свои навыки в создании интерфейсов.
 
+<img src="YesNo/Resources/Assets.xcassets/Image/presentation.imageset/presentation.jpeg" width="800">
+
 ## Особенности:
 - Использование **MVP** (Model-View-Presenter) архитектуры
 - Обработка сетевых запросов с API
@@ -24,5 +26,3 @@
    git clone https://github.com/soulhidee/YesNoApp.git
 2. Откройте проект в Xcode.
 3. Скомпилируйте и запустите приложение на устройстве или симуляторе.
-
-<img src="YesNo/Resources/Assets.xcassets/Image/presentation.imageset/presentation.jpeg" width="800">
