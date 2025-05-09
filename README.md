@@ -25,4 +25,4 @@
 2. Откройте проект в Xcode.
 3. Скомпилируйте и запустите приложение на устройстве или симуляторе.
 
-<img src="Assets/presentation.jpeg" width="800">
+<img src="YesNo/Resources/Assets.xcassets/Image/presentation.imageset/presentation.jpeg" width="800">
