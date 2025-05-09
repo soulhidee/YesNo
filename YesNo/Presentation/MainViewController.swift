@@ -27,7 +27,6 @@ final class MainViewController: UIViewController, WKNavigationDelegate, MainView
             alertPresenter: alertPresenter!
         )
         gifWebView.navigationDelegate = self
-        
         setupUI()
         soundManager.prepareSounds(named: ["buttonClick", "yes", "no"])
     }
